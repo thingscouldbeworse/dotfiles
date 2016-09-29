@@ -1,0 +1,80 @@
+URxvt.scrollBar: false
+!URxvt*font:     xft:monaco:style=Regular:antialias=true:size=10
+!URxvt*boldFont: xft:monaco:style=Bold:antialias=true:size=10
+
+URxvt.font:             xft:Droid Sans Mono for Powerline-10:hinting=True;antialias:True,xft:WenQuanYi Bitmap Song-12:medium;antialias=False,xft:WenQuanYi Zen Hei-12:medium;antialias=True,xft:HanaMinA-12:medium;antialias:True,xft:HanaMinB-12:medium;antialias:True,xft:HanaMinPlus-12:medium;antialias:True
+URxvt.boldFont: xft:Droid Sans Mono for Powerline-10:bold;hinting=True;antialias:True,xft:WenQuanYi Bitmap Song-12:bold;antialias=False,xft:WenQuanYi Zen Hei-12:bold;antialias=True,xft:HanaMinA-12:bold;antialias:True,xft:HanaMinB-12:bold;antialias:True,xft:HanaMinPlus-12:bold;antialias:True
+
+
+URxvt.letterSpace: -1
+
+URxvt*.transparent: true
+! URxvt*.shading: 99 to 0 darkens, 101 to 200 lightens
+URxvt*.shading: 30
+
+dzen2.font:       -*-fixed-*-*-*-*-*-*-*-*-*-*-*-*
+dzen2.foreground: #22EE11
+dzen2.background: black
+
+URxvt.depth: 32
+!URxvt*background: rgba:3333/3333/3333/cccc
+
+#define base00 #000000
+#define base01 #404040
+#define base02 #606060
+#define base03 #808080
+#define base04 #c0c0c0
+#define base05 #d0d0d0
+#define base06 #e0e0e0
+#define base07 #ffffff
+#define base08 #ff0000
+#define base09 #ff9900
+#define base0A #ff0099
+#define base0B #33ff00
+#define base0C #00ffff
+#define base0D #0066ff
+#define base0E #cc00ff
+#define base0F #3300ff
+
+*.foreground:   base05
+*.background:   base00
+*.cursorColor:  base05
+
+*.color0:       base00
+*.color1:       base08
+*.color2:       base0B
+*.color3:       base0A
+*.color4:       base0D
+*.color5:       base0E
+*.color6:       base0C
+*.color7:       base05
+
+*.color8:       base03
+*.color9:       base08
+*.color10:      base0B
+*.color11:      base0A
+*.color12:      base0D
+*.color13:      base0E
+*.color14:      base0C
+*.color15: base07
+
+Xft.antialias: 1
+Xft.autohint: 1
+Xft.dpi: 90
+Xft.hinting: 1
+Xft.hintstyle: hintfull
+Xft.lcdfilter: lcddefault
+Xft.rgba: rgb
+
+URxvt.cursorBlink: 1
+URxvt.cursorUnderline: 1
+
+URxvt.perl-ext-common: ...,tabbedex,...,clipboard,...,selection-to-clipboard
+URxvt.tabbed.autohide: true
+URxvt.keysym.Control-t: perl:tabbedex:new_tab
+!URxvt.keysym.Alt-Tab: perl:tabbedex:prev_tab
+URxvt.keysym.Control-Tab: perl:tabbedex:next_tab
+URxvt.keysym.Shift-Control-Tab: perl:tabbedex:pre_tab
+URxvt.keysym.Control-W: perl:tabbedex:close_tab
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.iso14755: False 

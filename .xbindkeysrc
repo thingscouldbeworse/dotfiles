@@ -1,0 +1,20 @@
+"amixer sset PCM 5-"
+XF86AudioLowerVolume
+"amixer sset PCM 5+"
+XF86AudioRaiseVolume
+"sh /home/kirk/Scripts/toggleSound.sh"
+XF86AudioMute
+"/usr/sbin/slock"
+XF86ScreenSaver
+"/usr/sbin/firefox-aurora"
+XF86Launch1
+"scrot '%Y-%m-%d_$wx$h.png' -q 100 -e 'mv $f ~/Pictures/screens/'"
+Print
+"sh /home/kirk/Scripts/externalScreen.sh"
+XF86Display
+"xbacklight -dec 3"
+XF86MonBrightnessDown
+"xbacklight -inc 3"
+XF86MonBrightnessUp
+"yegonesh"
+Mod4 + d
