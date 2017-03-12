@@ -1,25 +1,43 @@
 URxvt.scrollBar: false
-!URxvt*font:     xft:monaco:style=Regular:antialias=true:size=10
-!URxvt*boldFont: xft:monaco:style=Bold:antialias=true:size=10
 
-URxvt.font:             xft:Droid Sans Mono for Powerline-10:hinting=True;antialias:True,xft:WenQuanYi Bitmap Song-12:medium;antialias=False,xft:WenQuanYi Zen Hei-12:medium;antialias=True,xft:HanaMinA-12:medium;antialias:True,xft:HanaMinB-12:medium;antialias:True,xft:HanaMinPlus-12:medium;antialias:True
+URxvt.font: 	xft:Droid Sans Mono for Powerline-10:hinting=True;antialias:True,xft:WenQuanYi Bitmap Song-12:medium;antialias=False,xft:WenQuanYi Zen Hei-12:medium;antialias=True,xft:HanaMinA-12:medium;antialias:True,xft:HanaMinB-12:medium;antialias:True,xft:HanaMinPlus-12:medium;antialias:True
 URxvt.boldFont: xft:Droid Sans Mono for Powerline-10:bold;hinting=True;antialias:True,xft:WenQuanYi Bitmap Song-12:bold;antialias=False,xft:WenQuanYi Zen Hei-12:bold;antialias=True,xft:HanaMinA-12:bold;antialias:True,xft:HanaMinB-12:bold;antialias:True,xft:HanaMinPlus-12:bold;antialias:True
-
 
 URxvt.letterSpace: -1
 
-URxvt*.transparent: true
-! URxvt*.shading: 99 to 0 darkens, 101 to 200 lightens
-URxvt*.shading: 30
 
-dzen2.font:       -*-fixed-*-*-*-*-*-*-*-*-*-*-*-*
-dzen2.foreground: #22EE11
-dzen2.background: black
+Xft.antialias: 1
+Xft.autohint: 1
+Xft.dpi: 90
+Xft.hinting: 1
+Xft.hintstyle: hintfull
+Xft.lcdfilter: lcddefault
+Xft.rgba: rgb
 
-URxvt.depth: 32
-!URxvt*background: rgba:3333/3333/3333/cccc
 
-#define base00 #000000
+URxvt.cursorBlink: 1
+URxvt.cursorUnderline: 1
+
+! tabs
+
+URxvt.perl-ext-common: tabbedex,clipboard,selection-to-clipboard
+URxvt.tabbed.autohide: true
+URxvt.keysym.Control-t: perl:tabbedex:new_tab
+!URxvt.keysym.Alt-Tab: perl:tabbedex:prev_tab
+URxvt.keysym.Control-Tab: perl:tabbedex:next_tab
+!URxvt.keysym.Shift-Control-Tab: perl:tabbedex:pre_tab
+!URxvt.keysym.Control-W: perl:tabbedex:close_tab
+
+
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.iso14755: False 
+
+
+
+! Base16 Isotope
+! Scheme: Jan T. Sott
+
+#define base00 #222222
 #define base01 #404040
 #define base02 #606060
 #define base03 #808080
@@ -37,7 +55,11 @@ URxvt.depth: 32
 #define base0F #3300ff
 
 *.foreground:   base05
+#ifdef background_opacity
+*.background:   [background_opacity]base00
+#else
 *.background:   base00
+#endif
 *.cursorColor:  base05
 
 *.color0:       base00
@@ -57,24 +79,3 @@ URxvt.depth: 32
 *.color13:      base0E
 *.color14:      base0C
 *.color15: base07
-
-Xft.antialias: 1
-Xft.autohint: 1
-Xft.dpi: 90
-Xft.hinting: 1
-Xft.hintstyle: hintfull
-Xft.lcdfilter: lcddefault
-Xft.rgba: rgb
-
-URxvt.cursorBlink: 1
-URxvt.cursorUnderline: 1
-
-URxvt.perl-ext-common: ...,tabbedex,...,clipboard,...,selection-to-clipboard
-URxvt.tabbed.autohide: true
-URxvt.keysym.Control-t: perl:tabbedex:new_tab
-!URxvt.keysym.Alt-Tab: perl:tabbedex:prev_tab
-URxvt.keysym.Control-Tab: perl:tabbedex:next_tab
-URxvt.keysym.Shift-Control-Tab: perl:tabbedex:pre_tab
-URxvt.keysym.Control-W: perl:tabbedex:close_tab
-URxvt.keysym.Shift-Control-V: perl:clipboard:paste
-URxvt.iso14755: False 

@@ -27,7 +27,7 @@ wmname LG3D
 xset m 9/10 2
 
 # swap esc and caps-lock
-setxkbmap -option caps:swapescape
+#setxkbmap -option caps:swapescape
 
 # start xmonad
 exec xmonad

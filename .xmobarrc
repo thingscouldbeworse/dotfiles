@@ -10,7 +10,7 @@ Config {
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = "%battery% || %multicpu% || %coretemp% || %memory% || %pingstr% || %polls% }{ || %date%"
+   , template = "%battery% || %multicpu% || %coretemp% || %memory% || %dynnetwork% || }{ || %date%"
 
    -- general behavior
    , lowerOnStart =     False   -- send to bottom of window stack on start
@@ -42,8 +42,8 @@ Config {
 
         -- network activity monitor (dynamic interface resolution)
         , Run DynNetwork     [ "--template" , "<dev>: <tx>kB/s|<rx>kB/s"
-                             , "--Low"      , "1000"       -- units: kB/s
-                             , "--High"     , "5000"       -- units: kB/s
+                             , "--Low"      , "5000"       -- units: B/s
+                             , "--High"     , "10000"       -- units: B/s
                              , "--low"      , "#00b300"
                              , "--normal"   , "orange"
                              , "--high"     , "red"
@@ -96,7 +96,7 @@ Config {
 
         -- time and date indicator 
         --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
-        , Run Date "%H:%M:%S %a, %d" "date" 10
+        , Run Date "%r %a, %d" "date" 10
 
         -- wireless signal strength
         , Run Com "/home/kirk/Scripts/wirelessStrength.sh" [] "wifi" 30
