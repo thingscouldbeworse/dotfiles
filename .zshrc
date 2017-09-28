@@ -14,7 +14,7 @@ alias tpack='tar -zxvf'
 alias pkgs='comm -23 <(pacman -Qeq | sort) <(pacman -Qgq base base-devel | sort)'
 alias picin='feh -g 1366x768 -d -S filename'
 alias wific='sudo wifi-menu'
-alias minecraft='java -jar /home/kirk/Games/Minecraft.jar'
+#alias minecraft='java -jar /home/kirk/Games/Minecraft.jar'
 alias ppingg='pping -c 10 8.8.8.8'
 alias runsteam="LD_PRELOAD='/usr/$LIB/libstdc++.so.6 /usr/$LIB/libgcc_s.so.1 /usr/$LIB/libxcb.so.1 /usr/$LIB/libgpg-error.so' /usr/bin/steam"
 alias hearthstone="wine /home/kirk/.PlayOnLinux/wineprefix/hearthstone/drive_c/Program\ Files/Battle.net/Battle.net.exe"
@@ -35,3 +35,10 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 zprompt_theme='eriner'
 
 export ANDROID_SDK_ROOT=/home/kirk/Android/Sdk/
+export EDITOR=vim
+export PATH="/usr/lib/ccache/bin/:$PATH"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+

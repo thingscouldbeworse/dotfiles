@@ -1,24 +1,32 @@
 
-xmonad.hs:24:12: warning: [-Wdeprecations]
+xmonad.hs:28:14: warning: [-Wdeprecations]
     In the use of ‘defaultConfig’
     (imported from XMonad, but defined in XMonad.Config):
     Deprecated: "Use def (from Data.Default, and re-exported by XMonad and XMonad.Config) instead."
+   |
+28 |     xmonad $ defaultConfig
+   |              ^^^^^^^^^^^^^
 
-xmonad.hs:30:39: warning: [-Wdeprecations]
+xmonad.hs:34:43: warning: [-Wdeprecations]
     In the use of ‘defaultConfig’
     (imported from XMonad, but defined in XMonad.Config):
     Deprecated: "Use def (from Data.Default, and re-exported by XMonad and XMonad.Config) instead."
+   |
+34 |                         , handleEventHook defaultConfig ]
+   |                                           ^^^^^^^^^^^^^
 
-xmonad.hs:47:1: warning: [-Wtabs]
-    Tab character found here.
-    Please use spaces instead.
-
-xmonad.hs:63:54: warning: [-Wdeprecations]
+xmonad.hs:65:54: warning: [-Wdeprecations]
     In the use of ‘defaultConfig’
     (imported from XMonad, but defined in XMonad.Config):
     Deprecated: "Use def (from Data.Default, and re-exported by XMonad and XMonad.Config) instead."
+   |
+65 | myLayout                = avoidStruts  $  layoutHook defaultConfig
+   |                                                      ^^^^^^^^^^^^^
 
-xmonad.hs:64:54: warning: [-Wdeprecations]
+xmonad.hs:66:54: warning: [-Wdeprecations]
     In the use of ‘defaultConfig’
     (imported from XMonad, but defined in XMonad.Config):
     Deprecated: "Use def (from Data.Default, and re-exported by XMonad and XMonad.Config) instead."
+   |
+66 | myManageHook            = manageDocks <+> manageHook defaultConfig
+   |                                                      ^^^^^^^^^^^^^

@@ -1,0 +1,67 @@
+-- Main XMonad source code.
+import XMonad
+
+-- Allow management of dock programs.
+import XMonad.Hooks.ManageDocks
+
+-- Allow exec of programs (return handle).
+import XMonad.Util.Run(spawnPipe)
+
+-- Allow adding or removing keybindings.
+import XMonad.Util.EZConfig(additionalKeys)
+
+-- Allow Pointer-Follows-Focus.
+import XMonad.Actions.UpdatePointer
+
+-- Allow smart borders on fullscreen windows
+import XMonad.Layout.NoBorders
+
+-- Allow interfacing with system (get client info).
+import System.IO
+
+
+main = do
+  xmonad $ defaultConfig
+    {
+    terminal           = myTerminal,
+
+    handleEventHook = mconcat
+                    [ docksEventHook
+                    , handleEventHook defaultConfig ],
+
+    focusFollowsMouse  = myFocusFollowsMouse,
+
+    clickJustFocuses   = myClickJustFocuses,
+
+    borderWidth        = myBorderWidth,
+
+    modMask            = myModMask,
+
+    normalBorderColor  = myNormalBorderColor,
+    focusedBorderColor = myFocusedBorderColor,
+
+    -- hooks, layouts
+    layoutHook         = myLayout,
+    manageHook         = myManageHook
+  --  startupHook        = myStartupHook
+
+
+    }
+
+--myStartupHook =
+                        spawn "compton -cCGfF -o 0.5 -O 200 -I 200 -t 0 -l 0 -r 3 -D2 -m 0.88" --shadow-red 0.35 --shadow-green 0.92 --shadow-blue 0.93" --f
+
+myModMask               = mod4Mask
+
+myFocusFollowsMouse     = False
+myClickJustFocuses      = False
+
+myBorderWidth           = 0
+
+myTerminal              = "urxvt"
+
+myNormalBorderColor     = "gray"
+myFocusedBorderColor    = "blue"
+
+myLayout                = avoidStruts  $  layoutHook defaultConfig
+myManageHook            = manageDocks <+> manageHook defaultConfig

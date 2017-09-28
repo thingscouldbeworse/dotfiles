@@ -1,6 +1,9 @@
 -- Main XMonad source code.
 import XMonad
 
+-- Logging for spawned things
+import XMonad.Hooks.DynamicLog
+
 -- Allow management of dock programs.
 import XMonad.Hooks.ManageDocks
 
@@ -21,32 +24,31 @@ import System.IO
 
 
 main = do
-  xmonad $ defaultConfig
-    {
-    terminal           = myTerminal,
+    xmproc <- spawnPipe "/usr/bin/xmobar /home/kirk/.xmonad/.xmobar.hs" 
+    xmonad $ defaultConfig
+        {
+        terminal           = myTerminal
 
-    handleEventHook = mconcat 
-                    [ docksEventHook 
-                    , handleEventHook defaultConfig ],
-  
-    focusFollowsMouse  = myFocusFollowsMouse,
+        , handleEventHook = mconcat
+                        [ docksEventHook
+                        , handleEventHook defaultConfig ]
 
-    clickJustFocuses   = myClickJustFocuses,
+        , focusFollowsMouse  = myFocusFollowsMouse
 
-    borderWidth        = myBorderWidth,
+        , clickJustFocuses   = myClickJustFocuses
 
-    modMask            = myModMask,
+        , borderWidth        = myBorderWidth
 
-    normalBorderColor  = myNormalBorderColor,
-    focusedBorderColor = myFocusedBorderColor,
+        , modMask            = myModMask
 
-    -- hooks, layouts
-    layoutHook         = myLayout,
-    manageHook         = myManageHook
+        , normalBorderColor  = myNormalBorderColor
+        , focusedBorderColor = myFocusedBorderColor
 
-	
-    }
-
+        -- hooks, layouts
+        , layoutHook         = myLayout
+        , manageHook         = myManageHook
+        , logHook = myLogHook xmproc
+        }
 
 myModMask               = mod4Mask
 
@@ -60,5 +62,9 @@ myTerminal              = "urxvt"
 myNormalBorderColor     = "gray"
 myFocusedBorderColor    = "blue"
 
-myLayout                = avoidStruts  $  layoutHook defaultConfig 
+myLayout                = avoidStruts  $  layoutHook defaultConfig
 myManageHook            = manageDocks <+> manageHook defaultConfig
+myLogHook h             = dynamicLogWithPP $ xmobarPP
+                                                {ppTitle = xmobarColor "green" "" . shorten 50
+                                                , ppOutput = hPutStrLn h
+                                                }
