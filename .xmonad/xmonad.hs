@@ -24,7 +24,7 @@ import System.IO
 
 
 main = do
-    xmproc <- spawnPipe "/usr/bin/xmobar /home/kirk/.xmonad/.xmobar.hs" 
+    xmproc <- spawnPipe "/usr/bin/xmobar /home/kirk/.xmonad/.xmobar.hs"
     xmonad $ defaultConfig
         {
         terminal           = myTerminal
@@ -47,7 +47,7 @@ main = do
         -- hooks, layouts
         , layoutHook         = myLayout
         , manageHook         = myManageHook
-        , logHook = myLogHook xmproc
+        , logHook            = dynamicLogWithPP $ xmobarPP { ppOutput = hPutStrLn xmproc }
         }
 
 myModMask               = mod4Mask
