@@ -47,7 +47,19 @@ main = do
         -- hooks, layouts
         , layoutHook         = myLayout
         , manageHook         = myManageHook
-        , logHook            = dynamicLogWithPP $ xmobarPP { ppOutput = hPutStrLn xmproc }
+        -- , logHook            = dynamicLogWithPP $ xmobarPP { ppOutput = hPutStrLn xmproc }
+        , logHook = dynamicLogWithPP $ defaultPP
+            { ppOutput = hPutStrLn xmproc,
+              ppUrgent = xmobarColor "#cd924e" "",
+              ppCurrent = xmobarColor "#63a4bc" "" . wrap "[" "]",
+              ppTitle = xmobarColor "#63a4bc" "" . shorten 70,
+              ppLayout = (\ x -> pad $ case x of
+                            "Spacing 10 Tall" -> "Tall"
+                            "Spacing 10 Grid" -> "Grid"
+                            "Full"            -> "Full"
+                            _                 ->  x
+                         )
+            }
         }
 
 myModMask               = mod4Mask
@@ -64,7 +76,3 @@ myFocusedBorderColor    = "blue"
 
 myLayout                = avoidStruts  $  layoutHook defaultConfig
 myManageHook            = manageDocks <+> manageHook defaultConfig
-myLogHook h             = dynamicLogWithPP $ xmobarPP
-                                                {ppTitle = xmobarColor "green" "" . shorten 50
-                                                , ppOutput = hPutStrLn h
-                                                }

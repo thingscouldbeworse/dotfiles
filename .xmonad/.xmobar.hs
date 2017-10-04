@@ -10,7 +10,7 @@ Config {
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = "%battery%  %multicpu%  %coretemp%  %memory%  %dynnetwork% %fire% }{ %date%"
+   , template = "%battery%   %StdinReader% }{ %dynnetwork%  %multicpu%   %memory%   %coretemp%   %date%"
 
    -- general behavior
    , lowerOnStart =     False   -- send to bottom of window stack on start
@@ -50,7 +50,7 @@ Config {
                              ] 10
 
         -- cpu activity monitor
-        , Run MultiCpu       [ "-w", "2" 
+        , Run MultiCpu       [ "-w", "3" 
                              , "--template" , "<total0> <total1> <total2> <total3> "
                              , "--Low"      , "50"         -- units: %
                              , "--High"     , "85"         -- units: %
@@ -98,18 +98,10 @@ Config {
         --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
         , Run Date "%r %a, %d" "date" 10
 
-        -- wireless signal strength
-        , Run Com "/home/kirk/Scripts/wirelessStrength.sh" [] "wifi" 30
-
+        , Run StdinReader
+        
         -- Is the internet on fire?
-        , Run Com "/usr/bin/curl" ["-w", "30", "https://istheinternetonfire.com/status.txt"] "fire" 3000
-
-        -- Election polls
-        , Run Com "/home/kirk/Scripts/runPolls.sh" [] "polls" 3000
-
-        -- bar strength
-        , Run Com "/home/kirk/Scripts/newPingStrength.sh" [] "PingBar" 20
-
-
+        , Run Com "/home/kirk/Scripts/fire.sh" ["90"] "fire" 3000
+        
         ]
    }
