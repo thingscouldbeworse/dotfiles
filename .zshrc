@@ -1,5 +1,3 @@
-
-
 #
 # User configuration sourced by interactive shells
 #
@@ -8,6 +6,7 @@
 if [[ -s ${ZDOTDIR:-${HOME}}/.zim/init.zsh ]]; then
   source ${ZDOTDIR:-${HOME}}/.zim/init.zsh
 fi
+
 alias ls='ls -Ah --group-directories-first --color=auto'
 alias pingg='ping -c 3 8.8.8.8'
 alias tpack='tar -zxvf'
@@ -20,14 +19,15 @@ alias runsteam="LD_PRELOAD='/usr/$LIB/libstdc++.so.6 /usr/$LIB/libgcc_s.so.1 /us
 alias hearthstone="wine /home/kirk/.PlayOnLinux/wineprefix/hearthstone/drive_c/Program\ Files/Battle.net/Battle.net.exe"
 alias nls="sudo arp-scan --interface=wlp3s0 --localnet"
 
+function findexe() {
+  for ARG in $(pacman -Qql $1); do
+    [ ! -d $ARG ] && [ -x $ARG ] && echo $ARG;
+  done
+}
+
 #
 # User configuration sourced by interactive shells
 #
-
-# Source zim
-if [[ -s ${ZDOTDIR:-${HOME}}/.zim/init.zsh ]]; then
-  source ${ZDOTDIR:-${HOME}}/.zim/init.zsh
-fi
 
 # Colors
 BASE16_SHELL=$HOME/.config/base16-shell/
@@ -38,7 +38,8 @@ export ANDROID_SDK_ROOT=/home/kirk/Android/Sdk/
 export EDITOR=vim
 export PATH="/usr/lib/ccache/bin/:$PATH"
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+export GEM_HOME=$(ruby -e 'print Gem.user_dir')
+
+export PATH="/home/kirk/.rvm/bin/:$PATH"
 
