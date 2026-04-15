@@ -1,0 +1,61 @@
+{
+  "layer": "top",
+  "position": "top",
+  "spacing": 6,
+  "margin-top": 4,
+  "margin-left": 8,
+  "margin-right": 8,
+
+  "modules-left": ["custom/cpu", "custom/gpu", "custom/memory"],
+  "modules-center": [],
+  "modules-right": ["network", "clock"],
+
+  "custom/cpu": {
+    "exec": "/bin/bash -lc 'exec ~/.config/waybar/scripts/cpu_graph.sh'",
+    "return-type": "json",
+    "interval": 1,
+    "format": "{text}",
+    "tooltip": true
+  },
+
+  "custom/gpu": {
+    "exec": "/bin/bash -lc 'exec ~/.config/waybar/scripts/gpu_graph.sh'",
+    "return-type": "json",
+    "interval": 2,
+    "format": "{text}",
+    "tooltip": true
+  },
+
+  "custom/memory": {
+    "exec": "/bin/bash -lc 'exec ~/.config/waybar/scripts/mem_graph.sh'",
+    "return-type": "json",
+    "interval": 2,
+    "format": "{text}",
+    "tooltip": true
+  },
+
+  "network": {
+    "interval": 1,
+    "format-wifi": " {essid}   {bandwidthDownBytes}   {bandwidthUpBytes}",
+    "format-ethernet": " {bandwidthDownBytes}   {bandwidthUpBytes}",
+    "format-linked": " {bandwidthDownBytes}   {bandwidthUpBytes}",
+    "format-disconnected": "⚠ offline",
+    "tooltip-format": "{ifname}\n{ipaddr}/{cidr}\n {bandwidthDownBits}\n {bandwidthUpBits}"
+  },
+
+  "clock": {
+    "interval": 1,
+    "format": "{:%Y-%m-%d  %H:%M:%S}",
+    "tooltip-format": "<big>{calendar}</big>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b>{}</b></span>"
+      }
+    }
+  }
+}
