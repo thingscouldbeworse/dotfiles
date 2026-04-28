@@ -2,9 +2,10 @@
   "layer": "top",
   "position": "top",
   "spacing": 6,
-  "margin-top": 4,
-  "margin-left": 8,
-  "margin-right": 8,
+  "margin-top": 0,
+  "margin-left": 0,
+  "margin-right": 0,
+  "margin-bottom": 1,
 
   "modules-left": ["custom/cpu", "custom/gpu", "custom/memory"],
   "modules-center": ["hyprland/window"],
