@@ -7,8 +7,15 @@
   "margin-right": 8,
 
   "modules-left": ["custom/cpu", "custom/gpu", "custom/memory"],
-  "modules-center": [],
+  "modules-center": ["hyprland/window"],
   "modules-right": ["network", "clock"],
+
+  "hyprland/window": {
+    "format": "{class} — {title}",
+    "max-length": 80,
+    "separate-outputs": true,
+    "icon": true
+  },
 
   "custom/cpu": {
     "exec": "/bin/bash -lc 'exec ~/.config/waybar/scripts/cpu_graph.sh'",
