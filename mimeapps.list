@@ -5,3 +5,7 @@ image/png=feh.desktop
 image/webp=feh.desktop
 video/mp4=mpv.desktop
 video/x-matroska=mpv.desktop
+text/plain=vscodium-wayland.desktop
+
+[Added Associations]
+text/plain=vscodium-wayland.desktop;
