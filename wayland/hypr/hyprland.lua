@@ -1,21 +1,49 @@
 -- Create your modules separately and then require them like this:
 -- require("myColors")
 -----------------
+---- DEVICE ----
+----------------
+local mainMod = "ALT"
+local is_laptop = false
+do
+	local f = io.open("/proc/cpuinfo", "r")
+	if f then
+		local cpuinfo = f:read("*a") or ""
+		f:close()
+		if cpuinfo:find("i5", 1, true) then
+			is_laptop = true
+			mainMod = "SUPER"
+		end
+	end
+end
+
+-----------------
 ---- MONITORS ----
 -----------------
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
-hl.monitor({
-	output = "DP-1",
-	mode = "1920x1080",
-	position = "0x0",
-	scale = 1,
-})
-hl.monitor({
-	output = "HDMI-A-1",
-	mode = "2560x1440@144",
-	position = "1920x0",
-	scale = 1,
-})
+if is_laptop then
+	hl.monitor({
+		output = "",
+		mode = "preferred",
+		position = "auto",
+		scale = "auto",
+	})
+else
+	hl.monitor({
+		output = "DP-1",
+		mode = "1920x1080",
+		position = "0x0",
+		scale = 1,
+	})
+	hl.monitor({
+		output = "HDMI-A-1",
+		mode = "2560x1440@144",
+		position = "1920x0",
+		scale = 1,
+	})
+end
+
+
 ---------------------
 ---- MY PROGRAMS ----
 ---------------------
@@ -96,7 +124,7 @@ hl.config({
 		enabled = true,
 	},
 	dwindle = {
-		pseudotile = true,
+		--pseudotile = true,
 		preserve_split = true,
 	},
 	master = {
@@ -202,18 +230,6 @@ hl.device({
 ---------------------
 ---- KEYBINDINGS ----
 ---------------------
--- Laptop vs desktop mod: SUPER if /proc/cpuinfo mentions i5, else ALT
-local mainMod = "ALT"
-do
-	local f = io.open("/proc/cpuinfo", "r")
-	if f then
-		local cpuinfo = f:read("*a") or ""
-		f:close()
-		if cpuinfo:find("i5", 1, true) then
-			mainMod = "SUPER"
-		end
-	end
-end
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
 hl.bind(
