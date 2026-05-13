@@ -9,7 +9,7 @@
 
   "modules-left": ["custom/cpu", "custom/gpu", "custom/memory"],
   "modules-center": ["hyprland/window"],
-  "modules-right": ["network", "clock"],
+  "modules-right": ["network", "battery", "clock"],
 
   "hyprland/window": {
     "format": "{class} — {title}",
@@ -17,6 +17,18 @@
     "separate-outputs": true,
     "icon": true
   },
+
+  "battery": {
+        	"states": {
+            		"warning": 30,
+            		"critical": 15
+        	},
+          "format-charging": "󱐋 {capacity}%", 
+          "format-plugged": " {capacity}%",
+          "format-alt": "{time} {icon}",
+          "format-full": " {capacity}%",
+          "format-icons": ["", "", "", "", ""]
+	},
 
   "custom/cpu": {
     "exec": "/bin/bash -lc 'exec ~/.config/waybar/scripts/cpu_graph.sh'",
