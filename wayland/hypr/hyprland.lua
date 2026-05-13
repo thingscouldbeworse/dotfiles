@@ -277,6 +277,13 @@ hl.bind(
 	mainMod .. " + Print",
 	hl.dsp.exec_cmd('grim -g "$(slurp)" ~/Pictures/screens/$(date +\'%Y-%m-%d-%T.png\')')
 )
+-- Laptop Multimedia
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl set 2%+"))
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl set 2%-"))
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+"))
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-"))
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"))
+
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
 --------------------------------
