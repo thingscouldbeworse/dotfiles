@@ -30,19 +30,18 @@ if is_laptop then
 	})
 else
 	hl.monitor({
-		output = "DP-1",
+		output = "HDMI-A-1",
 		mode = "1920x1080",
 		position = "0x0",
 		scale = 1,
 	})
 	hl.monitor({
-		output = "HDMI-A-1",
-		mode = "2560x1440@143.99899",
+		output = "DP-1",
+		mode = "2560x1440@143.91Hz",
 		position = "1920x0",
 		scale = 1,
 	})
 end
-
 
 ---------------------
 ---- MY PROGRAMS ----
@@ -277,6 +276,7 @@ hl.bind(
 	mainMod .. " + Print",
 	hl.dsp.exec_cmd('grim -g "$(slurp)" ~/Pictures/screens/$(date +\'%Y-%m-%d-%T.png\')')
 )
+
 -- Laptop Multimedia
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl set 2%+"))
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl set 2%-"))
