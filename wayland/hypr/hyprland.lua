@@ -29,17 +29,27 @@ if is_laptop then
 		scale = "auto",
 	})
 else
+	-- Known 1080p panel — always left
 	hl.monitor({
-		output = "HDMI-A-1",
+		output = "desc:Dell Inc. DELL P2722H 3CSK093",
 		mode = "1920x1080",
 		position = "0x0",
 		scale = 1,
 	})
+	-- Known 1440p panel — always right of the 1080p
 	hl.monitor({
-		output = "DP-1",
-		mode = "2560x1440@143.91Hz",
+		output = "desc:AOC Q27G3XMN 1APQAJA005227",
+		--mode = "2560x1440@143.91Hz",
+		mode = "preferred",
 		position = "1920x0",
 		scale = 1,
+	})
+	-- Anything else: guest monitor, replacement panel, wrong dock, etc.
+	hl.monitor({
+		output = "",
+		mode = "preferred",
+		position = "auto",
+		scale = "auto",
 	})
 end
 
