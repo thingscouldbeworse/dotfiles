@@ -52,6 +52,18 @@ else
 		scale = "auto",
 	})
 end
+if not is_laptop then
+	hl.workspace_rule({
+		workspace = "1",
+		monitor = "desc:Dell Inc. DELL P2722H 3CSK093",
+		default = true,
+	})
+	hl.workspace_rule({
+		workspace = "2",
+		monitor = "desc:AOC Q27G3XMN 1APQAJA005227",
+		default = true,
+	})
+end
 
 ---------------------
 ---- MY PROGRAMS ----
