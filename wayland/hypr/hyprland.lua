@@ -29,41 +29,20 @@ if is_laptop then
 		scale = "auto",
 	})
 else
-	-- Known 1080p panel — always left
 	hl.monitor({
-		output = "desc:Dell Inc. DELL P2722H 3CSK093",
+		output = "DP-1",
 		mode = "1920x1080",
 		position = "0x0",
 		scale = 1,
 	})
-	-- Known 1440p panel — always right of the 1080p
 	hl.monitor({
-		output = "desc:AOC Q27G3XMN 1APQAJA005227",
-		--mode = "2560x1440@143.91Hz",
-		mode = "preferred",
+		output = "HDMI-A-1",
+		mode = "2560x1440@144",
 		position = "1920x0",
 		scale = 1,
 	})
-	-- Anything else: guest monitor, replacement panel, wrong dock, etc.
-	hl.monitor({
-		output = "",
-		mode = "preferred",
-		position = "auto",
-		scale = "auto",
-	})
 end
-if not is_laptop then
-	hl.workspace_rule({
-		workspace = "1",
-		monitor = "desc:Dell Inc. DELL P2722H 3CSK093",
-		default = true,
-	})
-	hl.workspace_rule({
-		workspace = "2",
-		monitor = "desc:AOC Q27G3XMN 1APQAJA005227",
-		default = true,
-	})
-end
+
 
 ---------------------
 ---- MY PROGRAMS ----
@@ -108,6 +87,9 @@ hl.env("VISUAL", "codium")
 -----------------------
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
+	quirks = {
+		skip_non_kms_dmabuf_formats = is_laptop and false or true,
+	},
 	general = {
 		gaps_in = 5,
 		gaps_out = 3,
@@ -161,7 +143,7 @@ hl.config({
 		kb_options = "",
 		kb_rules = "",
 		follow_mouse = 1,
-		sensitivity = -1.1,
+		sensitivity = -1,
 		touchpad = {
 			natural_scroll = false,
 		},
@@ -242,7 +224,7 @@ hl.device({
 })
 hl.device({
 	name = "tpps/2-ibm-trackpoint",
-	sensitivity = -0.45,
+	sensitivity = -0.60,
 })
 hl.device({
 	name = "synps/2-synaptics-touchpad",
@@ -298,7 +280,6 @@ hl.bind(
 	mainMod .. " + Print",
 	hl.dsp.exec_cmd('grim -g "$(slurp)" ~/Pictures/screens/$(date +\'%Y-%m-%d-%T.png\')')
 )
-
 -- Laptop Multimedia
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl set 2%+"))
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl set 2%-"))
