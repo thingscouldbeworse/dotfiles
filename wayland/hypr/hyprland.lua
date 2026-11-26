@@ -3,18 +3,17 @@
 -----------------
 ---- DEVICE ----
 ----------------
-local mainMod = "ALT"
+-- Device / Modifier detection
+local mainMod = "ALT"   -- default for desktop (no Super key)
 local is_laptop = false
-do
-	local f = io.open("/proc/cpuinfo", "r")
-	if f then
-		local cpuinfo = f:read("*a") or ""
-		f:close()
-		if cpuinfo:find("i5", 1, true) then
-			is_laptop = true
-			mainMod = "SUPER"
-		end
-	end
+
+-- Marker file – create ~/.config/hypr/.laptop on the laptop
+local marker_path = os.getenv("HOME") .. "/.config/hypr/.laptop"
+local marker = io.open(marker_path, "r")
+if marker then
+    marker:close()
+    is_laptop = true
+    mainMod = "SUPER"
 end
 
 -----------------
