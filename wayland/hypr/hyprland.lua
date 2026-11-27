@@ -35,6 +35,12 @@ else
 		scale = 1,
 	})
 	hl.monitor({
+		output = "DP-3",
+		mode = "2560x1440@170",
+		position = "1920x0",
+		scale = 1,
+	})
+	hl.monitor({
 		output = "HDMI-A-1",
 		mode = "2560x1440@144",
 		position = "1920x0",
@@ -134,6 +140,7 @@ hl.config({
 	},
 	misc = {
 		disable_splash_rendering = true,
+		mouse_move_focuses_monitor = false,
 	},
 	input = {
 		kb_layout = "us",
@@ -312,4 +319,12 @@ hl.window_rule({
 	move = "20 monitor_h-120",
 	float = true,
 })
+-- Force fullscreen for Steam games to ensure proper pointer confinement.
+if not is_laptop then
+	hl.window_rule({
+		name = "steam-games-fullscreen",
+		match = { class = "^steam_app_" },
+		fullscreen = true,
+	})
+end
 
